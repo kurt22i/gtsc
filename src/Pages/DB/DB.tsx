@@ -161,7 +161,7 @@ export function DB() {
   const [_, setLocation] = useLocation();
 
   React.useEffect(() => {
-    const url = "https://viewer.gcsim.workers.dev/gcsimdb";
+    const url = "https://viewer.gtsc.workers.dev/gcsimdb";
     axios
       .get(url)
       .then((resp) => {
