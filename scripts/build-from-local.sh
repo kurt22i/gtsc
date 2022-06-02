@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd "../gcsim/cmd/wasm"
+cd "../../gcsim3/cmd/wasm"
 
 # notice how we avoid spaces in $now to avoid quotation hell in go build command
 now=$(date --utc +%FT%T%Z)

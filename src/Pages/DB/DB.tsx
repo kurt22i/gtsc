@@ -162,7 +162,17 @@ export function DB() {
 
   React.useEffect(() => {
     const url = "https://viewer.gcsim.workers.dev/gcsimdb";
-    axios
+    fetch('./results.json')
+    .then(response => {
+      return response.json();
+   })
+    .then(jsondata => {
+      let data = jsondata;
+      setData(data);
+      parseFilterUrl();
+      setLoading(false);
+   })
+    /*axios
       .get(url)
       .then((resp) => {
         console.log(resp.data);
@@ -177,7 +187,7 @@ export function DB() {
         console.log(error);
         setLoading(false);
         setData([]);
-      });
+      });*/
   }, []);
 
   const openInSim = () => {
