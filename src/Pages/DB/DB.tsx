@@ -161,17 +161,33 @@ export function DB() {
   const [_, setLocation] = useLocation();
 
   React.useEffect(() => {
-    const url = "https://viewer.gcsim.workers.dev/gcsimdb";
-    fetch('./results.json')
-    .then(response => {
-      return response.json();
-   })
-    .then(jsondata => {
-      let data = jsondata;
-      setData(data);
+    const url = "https://api.jsonbin.io/b/62993139449a1f3821fba1f5";
+    axios
+      .get(url)
+      .then((resp) => {
+        console.log(resp.data);
+        let data = resp.data;
+
+        setData(data);
+        parseFilterUrl();
+        setLoading(false);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+        setLoading(false);
+        setData([]);
+      });
+    /*fetch('./results.json')
+    .then(async response => {
+      setData(await response.json());
       parseFilterUrl();
       setLoading(false);
-   })
+   })*/
+    /*.then(jsondata => {
+      let data = jsondata;
+      setData(data);
+   })*/
     /*axios
       .get(url)
       .then((resp) => {

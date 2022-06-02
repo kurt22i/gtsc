@@ -18,7 +18,7 @@ export const dbInitialState: DBState = {
 export function loadDB(): AppThunk {
   return function (dispatch, getState) {
     dispatch(dbActions.setLoading(true));
-    const url = "https://viewer.gcsim.workers.dev/gcsimdb";
+    const url = "https://api.jsonbin.io/b/62993139449a1f3821fba1f5";
     axios
       .get(url)
       .then((resp) => {
