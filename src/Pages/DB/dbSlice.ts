@@ -18,10 +18,24 @@ export const dbInitialState: DBState = {
 export function loadDB(): AppThunk {
   return function (dispatch, getState) {
     dispatch(dbActions.setLoading(true));
-    const url = "https://api.jsonbin.io/b/62993139449a1f3821fba1f5";
+    /*fetch('./results.json').then(response => {
+      console.log(response);
+      return response.json();
+    }).then(data => {
+      // Work with JSON data here
+      console.log(data);
+      dispatch(dbActions.setData(data));
+        dispatch(dbActions.setLoading(false));
+        dispatch(dbActions.setLoaded(true));
+    }).catch(err => {
+      // Do something for an error here
+      console.log("Error Reading data " + err);
+    });*/
+
+    const url = "http://localhost:1234/results.json";
     axios
       .get(url)
-      .then((resp) => {
+      .then(function(resp) {
         console.log(resp.data);
         let data = resp.data;
 

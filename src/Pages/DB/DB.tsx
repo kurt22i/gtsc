@@ -161,10 +161,23 @@ export function DB() {
   const [_, setLocation] = useLocation();
 
   React.useEffect(() => {
-    const url = "https://api.jsonbin.io/b/62993139449a1f3821fba1f5";
-    axios
+    const url = "http://localhost:1234/results.json";
+    /*fetch('./results.json').then(response => {
+      console.log(response);
+      return response.json();
+    }).then(data => {
+      // Work with JSON data here
+      console.log(data);
+      setData(data);
+        parseFilterUrl();
+        setLoading(false);
+    }).catch(err => {
+      // Do something for an error here
+      console.log("Error Reading data " + err);
+    });*/
+  axios
       .get(url)
-      .then((resp) => {
+      .then(function(resp) {
         console.log(resp.data);
         let data = resp.data;
 
